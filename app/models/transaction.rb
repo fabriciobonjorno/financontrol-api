@@ -5,4 +5,7 @@ class Transaction < ApplicationRecord
   belongs_to :bank_account
   belongs_to :category
   belongs_to :user
+
+  # Enum
+  enum types: %i[income expense]
 end
