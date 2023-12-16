@@ -6,7 +6,7 @@ module Api
       module Index
         class Presenter < MainService
           def call(categories)
-            pcategories_map(categories)
+            categories_map(categories)
           end
 
           def categories_map(categories)
