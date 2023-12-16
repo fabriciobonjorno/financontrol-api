@@ -6,10 +6,10 @@ module Api
       module Index
         class Presenter < MainService
           def call(categories)
-            profiles_map(categories)
+            pcategories_map(categories)
           end
 
-          def profiles_map(categories)
+          def categories_map(categories)
             # TODO: After remove unnecessary fields from pagination
             {
               pagination: {

@@ -7,7 +7,7 @@ module Api
         class Presenter < MainService
           def call(user)
             {
-              id: user.id.to_s,
+              id: user.id,
               name: user.name,
               confirmed: user.confirmed,
               confirmed_at: Util.format_date(user.updated_at)

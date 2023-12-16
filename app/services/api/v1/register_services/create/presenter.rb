@@ -7,7 +7,7 @@ module Api
         class Presenter < MainService
           def call(user)
             {
-              id: user.id.to_s,
+              id: user.id,
               name: user.name,
               email: user.email,
               birth_date: user.birth_date,
