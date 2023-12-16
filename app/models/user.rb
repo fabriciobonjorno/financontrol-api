@@ -37,6 +37,22 @@ class User < ApplicationRecord
     save
   end
 
+  def update_attempts
+    self.login_attempts += 1
+    if self.login_attempts >= 5
+      self.locked = true
+      self.locked_at = Time.now
+    end
+    save
+  end
+
+  def reset_attempts
+    self.login_attempts = 0
+    self.locked = false
+    self.locked_at = nil
+    save
+  end
+
   # Private methods
   private
 

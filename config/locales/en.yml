@@ -3,6 +3,16 @@ en:
     errors:
       email: 'Invalid email, check and try again'
       password: 'Password must be more than 8 characters, including 1 uppercase letter, 1 number, 1 special character'
+  login:
+    success:
+       sign_in: 'User authenticated succesfully'
+       sign_out: 'User successfully logged out'
+    errors:
+      blocked: 'User is blocked, please try again in %{time}'
+      not_confirmed: 'You need to confirm your email before continuing'
+      invalid_credentials: 'Invalid Credentials'
+      attempts: 'You have %{attempts} more attempts'
+      sign_out: 'Error when sign out'
   confirmation:
     errors:
       not_found: 'Invalid information, check and try again'

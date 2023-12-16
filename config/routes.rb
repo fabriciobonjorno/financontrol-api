@@ -10,6 +10,11 @@ Rails.application.routes.draw do
         post :confirmation
         post :reset_confirmation_token
       end
+
+      namespace :auth do
+        post :login
+        delete :logout
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
