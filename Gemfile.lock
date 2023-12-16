@@ -142,13 +142,25 @@ GEM
     hirb (0.7.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-console (0.7.0)
+    io-console (0.7.1)
     irb (1.10.1)
       rdoc
       reline (>= 0.3.8)
     jwt (2.7.1)
     jwt_sessions (3.2.1)
       jwt (~> 2.6, < 3)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -218,7 +230,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
-    rdoc (6.6.1)
+    rdoc (6.6.2)
       psych (>= 4.0.0)
     reline (0.4.1)
       io-console (~> 0.5)
@@ -245,6 +257,7 @@ DEPENDENCIES
   dry-validation
   hirb
   jwt_sessions
+  kaminari
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)

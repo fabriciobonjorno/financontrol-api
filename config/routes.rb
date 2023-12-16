@@ -15,6 +15,8 @@ Rails.application.routes.draw do
         post :login
         delete :logout
       end
+
+      resources :categories, except: %i[destroy]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -22,10 +22,12 @@ ActiveRecord::Schema[7.1].define(version: 20_231_215_014_812) do
     t.decimal 'initial_balance', precision: 10, scale: 2, default: '0.0'
     t.integer 'type', default: 0
     t.string 'color'
+    t.datetime 'deleted_at'
     t.uuid 'user_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['color'], name: 'index_bank_accounts_on_color'
+    t.index ['deleted_at'], name: 'index_bank_accounts_on_deleted_at'
     t.index ['initial_balance'], name: 'index_bank_accounts_on_initial_balance'
     t.index ['name'], name: 'index_bank_accounts_on_name'
     t.index ['type'], name: 'index_bank_accounts_on_type'
@@ -35,9 +37,11 @@ ActiveRecord::Schema[7.1].define(version: 20_231_215_014_812) do
   create_table 'categories', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.string 'name', default: '', null: false
     t.string 'icon', default: '', null: false
+    t.datetime 'deleted_at'
     t.uuid 'user_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['deleted_at'], name: 'index_categories_on_deleted_at'
     t.index ['icon'], name: 'index_categories_on_icon'
     t.index ['name'], name: 'index_categories_on_name'
     t.index ['user_id'], name: 'index_categories_on_user_id'
@@ -48,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 20_231_215_014_812) do
     t.decimal 'amount', precision: 10, scale: 2, default: '0.0'
     t.date 'date'
     t.integer 'type', default: 0
+    t.datetime 'deleted_at'
     t.uuid 'bank_account_id', null: false
     t.uuid 'category_id', null: false
     t.uuid 'user_id', null: false
@@ -57,6 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 20_231_215_014_812) do
     t.index ['bank_account_id'], name: 'index_transactions_on_bank_account_id'
     t.index ['category_id'], name: 'index_transactions_on_category_id'
     t.index ['date'], name: 'index_transactions_on_date'
+    t.index ['deleted_at'], name: 'index_transactions_on_deleted_at'
     t.index ['name'], name: 'index_transactions_on_name'
     t.index ['type'], name: 'index_transactions_on_type'
     t.index ['user_id'], name: 'index_transactions_on_user_id'
