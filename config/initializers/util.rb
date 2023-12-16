@@ -21,4 +21,8 @@ module Util
   def self.password_regex(password)
     password =~ /\A(?=.*\d)(?=.*[A-Z])(?=.*\W)[^ ]{8,}\z/
   end
+
+  def self.format_date(date)
+    date.strftime('%Y-%m-%d')
+  end
 end

@@ -3,15 +3,14 @@
 module Api
   module V1
     module RegisterServices
-      module Create
+      module Confirmation
         class Presenter < MainService
           def call(user)
             {
               id: user.id.to_s,
               name: user.name,
-              email: user.email,
-              birth_date: user.birth_date,
-              registered_at: Util.format_date(user.created_at)
+              confirmed: user.confirmed,
+              confirmed_at: Util.format_date(user.updated_at)
             }
           end
         end

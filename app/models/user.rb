@@ -27,6 +27,16 @@ class User < ApplicationRecord
     save
   end
 
+  def token_is_valid?(_token)
+    confirmation_token
+    confirmation_token_sent_at + 24.hours >= Time.now
+  end
+
+  def confirm_account
+    self.confirmed = true
+    save
+  end
+
   # Private methods
   private
 
