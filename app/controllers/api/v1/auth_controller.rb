@@ -11,12 +11,14 @@ module Api
           on.failure(:verify_confirmation) { |message| render json: { message: }, status: 401 }
           on.failure(:verify_block) { |message| render json: { message: }, status: 401 }
           on.failure(:create_session) { |message| render json: { message: }, status: 401 }
+          on.failure(:output) { |message| render json: { message: }, status: 500 }
           on.success { |response| render json: response, status: 200 }
         end
       end
 
       def logout
         Api::V1::AuthServices::Logout::Transaction.call(payload) do |on|
+          on.failure(:output) { |message| render json: { message: }, status: 500 }
           on.failure { |response| render json: response, status: 401 }
           on.success { |response| render json: response, status: 200 }
         end

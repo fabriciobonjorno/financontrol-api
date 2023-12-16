@@ -6,8 +6,7 @@ module Api
       module Create
         class Transaction < MainService
           step :validate_inputs
-          # step :verify_category
-          step :create_category
+          step :create
           step :output
 
           def validate_inputs(params)
@@ -22,7 +21,7 @@ module Api
             validation.success? ? Success(hash_params) : Failure(validation.errors.to_h)
           end
 
-          def create_category(params)
+          def create(params)
             category_params = params[:category]
             user_id = params[:current_user].id
             category = Category.new
