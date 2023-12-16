@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       namespace :register do
         post :create
         post :confirmation
+        post :reset_confirmation_token
       end
     end
   end
