@@ -22,15 +22,15 @@ module Api
           end
 
           def paginate_categories(params)
-            current_page = params[:paginate][:current_page] || 1
-            per_page = params[:paginate][:per_page] || 10
-            categories = Category.where(user_id: params[:current_user].id)
-            categories = categories.page(current_page).per(per_page)
-            if categories
-              Success(categories)
-            else
-              Failure(I18n.t('profile.errors.exists'))
-            end
+            current_page = params.dig(:paginate, :current_page) || 1
+            per_page = params.dig(:paginate, :per_page) || 10
+            user_id = params[:current_user].id
+
+            categories = Category.where(user_id:)
+                                 .page(current_page)
+                                 .per(per_page)
+
+            Success(categories)
           end
 
           def output(categories)
@@ -38,7 +38,7 @@ module Api
             if response
               Success(response)
             else
-              Failure(categories.errors.full_messages)
+              Failure(I18n.t('categories.errors.not_exists'))
             end
           end
         end
