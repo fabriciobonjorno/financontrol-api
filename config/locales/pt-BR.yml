@@ -1,0 +1,38 @@
+pt-BR:
+  users:
+    errors:
+      email: 'Email inválido, verifique e tente novamente'
+      password: 'A senha deve ter mais de 8 caracteres, incluindo 1 letra maiúscula, 1 número, 1 caractere especial'
+  login:
+    success:
+       sign_in: 'Usuário autenticado com sucesso'
+       sign_out: 'Usuário desconectado com sucesso'
+    errors:
+      blocked: 'Usuário bloqueado, por favor, tente novamente em %{time}'
+      not_confirmed: 'Você precisa confirmar seu e-mail antes de continuar'
+      invalid_credentials: 'Credenciais inválidas'
+      attempts: 'Você tem mais %{attempts} tentativas'
+      sign_out: 'Erro ao sair'
+  confirmation:
+    errors:
+      not_found: 'Informação inválida, verifique e tente novamente'
+      timeout:  'Token de confirmação expirado, para confirmar a conta solicite um novo token'
+      confirmed: 'Conta já confirmada'
+  categories:
+    errors:
+      not_exists: 'Erro ao listar categorias'
+      not_found:  'Categoria não encontrada'
+  dry_validation:
+    errors:
+      fields:
+        name: 'Nome'
+        icon: 'Ícone'
+        id: 'ID'
+        email: 'E-mail'
+        password: 'Senha'
+        password_confirmation: 'Senha de confirmação'
+        birth_date: 'Data de nascimento'
+        confirmation_token: 'Token de confirmação'
+      missing: "é obrigatório"
+      link:
+        article: 'e'

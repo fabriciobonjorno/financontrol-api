@@ -25,4 +25,9 @@ module Util
   def self.format_date(date)
     date.strftime('%Y-%m-%d')
   end
+
+  def self.calculate_time(time, hour, now)
+    total_time = (time + hour) - now
+    ActiveSupport::Duration.build(total_time.to_i).inspect
+  end
 end

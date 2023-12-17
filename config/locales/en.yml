@@ -22,3 +22,17 @@ en:
     errors:
       not_exists: 'Error listing categories'
       not_found: 'Category not found'
+  dry_validation:
+    errors:
+      fields:
+        name: 'Name'
+        icon: 'Icon'
+        id: 'ID'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+        birth_date: 'Birth date'
+        confirmation_token: 'Confirmation token'
+      missing: "is required"
+      link:
+        article: 'and'

@@ -11,7 +11,7 @@ module Api
 
           def validate_params(params)
             validation = Contract.call(params.permit!.to_h)
-            validation.success? ? Success(params) : Failure(validation.errors.to_h)
+            validation.success? ? Success(params) : Failure(format_errors(validation.errors.to_h))
           end
 
           def send_token(params)
@@ -28,7 +28,7 @@ module Api
             if response
               Success(response)
             else
-              Failure(user.errors.full_messages)
+              Failure(user.errors.full_messages.to_sentence)
             end
           end
 

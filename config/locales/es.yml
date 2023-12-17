@@ -1,0 +1,38 @@
+es:
+  users:
+    errors:
+      email: 'Correo electrónico no válido, verifique e intente nuevamente'
+      password: 'La contraseña debe tener más de 8 caracteres, incluyendo 1 letra mayúscula, 1 número, 1 carácter especial'
+  login:
+    success:
+       sign_in: 'Usuario autenticado correctamente'
+       sign_out: 'Usuario desconectado correctamente'
+    errors:
+      blocked: 'Usuario bloqueado, por favor, inténtelo de nuevo en %{time}'
+      not_confirmed: 'Necesitas confirmar tu correo electrónico antes de continuar'
+      invalid_credentials: 'Credenciales inválidas'
+      attempts: 'Tienes %{attempts} intentos más'
+      sign_out: 'Error al cerrar sesión'
+  confirmation:
+    errors:
+      not_found: 'Información no válida, verifique e intente nuevamente'
+      timeout:  'Token de confirmación caducado, para confirmar la cuenta solicite un nuevo token'
+      confirmed: 'Cuenta ya confirmada'
+  categories:
+    errors:
+      not_exists: 'Error al listar categorías'
+      not_found: 'Categoría no encontrada'
+  dry_validation:
+    errors:
+      fields:
+        name: 'Nombre'
+        icon: 'Ícono'
+        id: 'ID'
+        email: 'Correo electrónico'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de contraseña'
+        birth_date: 'Fecha de nacimiento'
+        confirmation_token: 'Token de confirmación'
+      missing: "es obligatorio"
+      link:
+        article: 'y'

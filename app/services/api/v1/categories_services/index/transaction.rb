@@ -18,7 +18,7 @@ module Api
             }.compact
 
             validation = Contract.call(filter_params.permit!.to_h)
-            validation.success? ? Success(hash_params) : Failure(validation.errors.to_h)
+            validation.success? ? Success(hash_params) : Failure(format_errors(validation.errors.to_h))
           end
 
           def paginate_categories(params)
