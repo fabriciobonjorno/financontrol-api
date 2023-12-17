@@ -1,4 +1,6 @@
 es:
+  locale:
+    changed: 'El idioma cambió exitosamente'
   users:
     errors:
       email: 'Correo electrónico no válido, verifique e intente nuevamente'

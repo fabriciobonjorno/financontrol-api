@@ -1,4 +1,6 @@
 en:
+  locale:
+    changed: 'Language changed successfully'
   users:
     errors:
       email: 'Invalid email, check and try again'

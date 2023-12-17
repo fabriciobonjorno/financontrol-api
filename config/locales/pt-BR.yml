@@ -1,4 +1,6 @@
 pt-BR:
+  locale:
+    changed: 'Idioma alterado com sucesso'
   users:
     errors:
       email: 'Email inválido, verifique e tente novamente'

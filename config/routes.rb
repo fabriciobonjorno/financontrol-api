@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resources :categories, except: %i[destroy]
     end
   end
+  post 'set_locale/:locale', to: 'application#set_locale'
+  get 'check_locale', to: 'application#check_locale'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
