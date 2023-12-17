@@ -12,10 +12,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_231_215_014_812) do
+ActiveRecord::Schema[7.1].define(version: 20_231_217_231_658) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
+  enable_extension 'unaccent'
 
   create_table 'bank_accounts', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.string 'name', default: '', null: false

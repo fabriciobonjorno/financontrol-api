@@ -25,7 +25,7 @@ module Api
             current_page = params.dig(:filter_params, :current_page) || 1
             per_page = params.dig(:filter_params, :per_page) || 10
             order = params.dig(:filter_params, :order) || 'asc'
-            filter = params.dig(:filter_params, :name)
+            filter = params.dig(:filter_params, :filter_name)
             user_id = params[:current_user].id
 
             categories = find_by_search(user_id, order, filter)
@@ -46,7 +46,7 @@ module Api
           def find_by_search(user_id, order, filter)
             categories = Category.where(user_id:)
             categories = categories.order(name: order)
-            categories = categories.where('UPPER(name) LIKE ?', "%#{filter.upcase}%") if filter.present?
+            categories = categories.where('unaccent(name) ilike unaccent(?)', "%#{filter.upcase}%") if filter.present?
             categories
           end
         end

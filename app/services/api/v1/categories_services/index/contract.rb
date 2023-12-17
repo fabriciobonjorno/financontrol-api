@@ -8,7 +8,7 @@ module Api
           params do
             optional(:current_page).filled(:integer)
             optional(:per_page).filled(:integer)
-            optional(:name).filled(:string)
+            optional(:filter_name).filled(:string)
             optional(:order).filled(:string)
           end
         end
