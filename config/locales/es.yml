@@ -20,10 +20,13 @@ es:
       not_found: 'Información no válida, verifique e intente nuevamente'
       timeout:  'Token de confirmación caducado, para confirmar la cuenta solicite un nuevo token'
       confirmed: 'Cuenta ya confirmada'
+    success:
+      reset_token: 'Restablecimiento del token exitoso, revisa tu correo electrónico %{email}'
+      confirmation_token: 'Su cuenta ha sido confirmada exitosamente, use el correo electrónico %{email} para iniciar sesión'
   categories:
     errors:
-      not_exists: 'Error al listar categorías'
-      not_found: 'Categoría no encontrada'
+      not_exists: 'No tienes ninguna categoría registrada'
+      not_found:  'Categoría no encontrada' 
   dry_validation:
     errors:
       fields:

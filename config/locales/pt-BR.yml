@@ -20,10 +20,13 @@ pt-BR:
       not_found: 'Informação inválida, verifique e tente novamente'
       timeout:  'Token de confirmação expirado, para confirmar a conta solicite um novo token'
       confirmed: 'Conta já confirmada'
+    success:
+      reset_token: 'Token resetado com sucesso, verifique seu email %{email}'
+      confirmation_token: 'Sua conta foi confirmada com sucesso, use o email %{email} para logar'
   categories:
     errors:
-      not_exists: 'Erro ao listar categorias'
-      not_found:  'Categoria não encontrada'
+      not_exists: 'Você não possui nenhuma categoria cadastrada'
+      not_found:  'Categoria não encontrada'      
   dry_validation:
     errors:
       fields:

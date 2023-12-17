@@ -18,28 +18,18 @@ module Api
           def validate_token(params)
             user = User.find_by(confirmation_token: params[:confirmation_token])
             return Failure(I18n.t('confirmation.errors.not_found')) if user.nil?
-            return Failure(I18n.t('confirmation.errors.timeout')) unless user.token_is_valid?(params[:confirmation_token])
             return Failure(I18n.t('confirmation.errors.confirmed')) if user.confirmed?
+            return Failure(I18n.t('confirmation.errors.timeout')) unless user.token_is_valid?(params[:confirmation_token])
 
             Success(user)
           end
 
           def account_confirmation(user)
-            user.confirm_account
-            if user
-              Success(user)
-            else
-              Failure(I18n.t('confirmation.errors.unknown'))
-            end
+            user.confirm_account ? Success(user) : Failure(I18n.t('confirmation.errors.unknown'))
           end
 
           def output(user)
-            response = Presenter.call(user)
-            if response
-              Success(response)
-            else
-              Failure(user.errors.full_messages.to_sentence)
-            end
+            Success(message: I18n.t('confirmation.success.confirmation_token', email: user.email))
           end
         end
       end

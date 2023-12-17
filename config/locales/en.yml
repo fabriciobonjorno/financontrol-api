@@ -20,10 +20,13 @@ en:
       not_found: 'Invalid information, check and try again'
       timeout:  'Expired confirmation token, to confirm account request a new token'
       confirmed: 'Account already confirmed'
+    success:
+      reset_token: 'Token reset successfully, check your email %{email}'
+      confirmation_token: 'Your account has been confirmed successfully, use email %{email} to log in'
   categories:
     errors:
-      not_exists: 'Error listing categories'
-      not_found: 'Category not found'
+      not_exists: 'You do not have any category registered'
+      not_found:  'Category not found'   
   dry_validation:
     errors:
       fields:

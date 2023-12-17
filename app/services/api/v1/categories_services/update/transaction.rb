@@ -23,7 +23,7 @@ module Api
           def update(params)
             category = Category.find(params[:category][:id])
             return Failure(I18n.t('categories.errors.not_found')) if category.nil?
-            return Failure(message: I18n.t('categories.errors.not_found')) unless category.user == params[:current_user]
+            return Failure(I18n.t('categories.errors.not_found')) if category.user != params[:current_user]
 
             category.name = params[:category][:name]
             category.icon = params[:category][:icon] if params[:category][:icon].present?
@@ -37,11 +37,7 @@ module Api
 
           def output(category)
             response = Presenter.call(category)
-            if response
-              Success(response)
-            else
-              Failure(category.errors.full_messages.to_sentence)
-            end
+            response ? Success(response) : Failure(category.errors.full_messages.to_sentence)
           end
         end
       end

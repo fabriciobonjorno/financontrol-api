@@ -23,25 +23,18 @@ module Api
           def create(params)
             category_params = params[:category]
             user_id = params[:current_user].id
-            category = Category.new
-            category.name = category_params[:name]
-            category.icon = category_params[:icon]
-            category.user_id = user_id
+            category = Category.new(
+              name: category_params[:name],
+              icon: category_params[:icon],
+              user_id:
+            )
 
-            if category.save
-              Success(category)
-            else
-              Failure(category.errors.full_messages.to_sentence)
-            end
+            category.save ? Success(category) : Failure(category.errors.full_messages.to_sentence)
           end
 
           def output(category)
             response = Presenter.call(category)
-            if response
-              Success(response)
-            else
-              Failure(category.errors.full_messages.to_sentence)
-            end
+            response ? Success(response) : Failure(category.errors.full_messages.to_sentence)
           end
         end
       end

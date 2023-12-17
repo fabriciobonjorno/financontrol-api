@@ -35,12 +35,10 @@ module Api
           end
 
           def output(categories)
+            return Failure(I18n.t('categories.errors.not_exists')) if categories.empty?
+
             response = Presenter.call(categories)
-            if response
-              Success(response)
-            else
-              Failure(I18n.t('categories.errors.not_exists'))
-            end
+            Success(response)
           end
 
           private

@@ -15,12 +15,13 @@ module Api
           end
 
           def create(params)
-            user = User.new
-            user.name = params[:name]
-            user.email = params[:email]
-            user.password = params[:password]
-            user.password_confirmation = params[:password_confirmation]
-            user.birth_date = params[:birth_date]
+            user = User.new(
+              name: params[:name],
+              email: params[:email],
+              password: params[:password],
+              password_confirmation: params[:password_confirmation],
+              birth_date: params[:birth_date]
+            )
 
             if user.save
               send_confirmation_email(user)
@@ -32,21 +33,14 @@ module Api
 
           def output(user)
             response = Presenter.call(user)
-            if response
-              Success(response)
-            else
-              Failure(user.errors.full_messages.to_sentence)
-            end
+            response ? Success(response) : Failure(user.errors.full_messages.to_sentence)
           end
 
           private
 
           def send_confirmation_email(user)
-            user = User.find_by_email(user.email)
             user.generate_confirmation_token
-            Thread.new do
-              SendConfirmationMailer.send_confirmation_token(user).deliver
-            end
+            Thread.new { SendConfirmationMailer.send_confirmation_token(user).deliver }
           end
         end
       end

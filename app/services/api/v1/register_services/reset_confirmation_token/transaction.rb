@@ -24,22 +24,14 @@ module Api
           end
 
           def output(user)
-            response = Presenter.call(user)
-            if response
-              Success(response)
-            else
-              Failure(user.errors.full_messages.to_sentence)
-            end
+            Success(message: I18n.t('confirmation.success.reset_token', email: user.email))
           end
 
           private
 
           def send_confirmation_email(user)
-            user = User.find_by_email(user.email)
             user.generate_confirmation_token
-            Thread.new do
-              SendConfirmationMailer.send_confirmation_token(user).deliver
-            end
+            Thread.new { SendConfirmationMailer.send_confirmation_token(user).deliver }
           end
         end
       end
