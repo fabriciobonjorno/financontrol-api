@@ -62,7 +62,7 @@ module Api
               user&.update_attempts
               time = timeout(user) if user.locked_at.present?
               attempts = user ? 5 - user.login_attempts : 0
-              message = attempts.zero? ? I18n.t('login.errors.blocked', time:) : I18n.t('login.errors.login.attempts', attempts:)
+              message = attempts.zero? ? I18n.t('login.errors.blocked', time:) : I18n.t('login.errors.attempts', attempts:)
               Failure(message)
             end
           end

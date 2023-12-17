@@ -9,7 +9,7 @@ module Api
             required(:id).filled(:string)
             required(:category).hash do
               required(:name).filled(:string)
-              required(:icon).filled(:string)
+              optional(:icon).filled(:string)
             end
           end
         end

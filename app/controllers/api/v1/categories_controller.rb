@@ -24,7 +24,7 @@ module Api
       end
 
       def update
-        Api::V1::CategoriesServices::Update::Transaction.call(params) do |on|
+        Api::V1::CategoriesServices::Update::Transaction.call([params, current_user]) do |on|
           on.failure(:validate_params) { |message| render json: { message: }, status: 400 }
           on.failure(:update) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }

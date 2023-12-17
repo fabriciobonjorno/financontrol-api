@@ -10,16 +10,23 @@ module Api
           step :output
 
           def validate_inputs(params)
-            validation = Contract.call(params.permit!.to_h)
-            validation.success? ? Success(params) : Failure(format_errors(validation.errors.to_h))
+            category, current_user = params
+
+            hash_params = {
+              category:,
+              current_user:
+            }.compact
+            validation = Contract.call(category.permit!.to_h)
+            validation.success? ? Success(hash_params) : Failure(format_errors(validation.errors.to_h))
           end
 
           def update(params)
-            category = Category.find(params[:id])
+            category = Category.find(params[:category][:id])
             return Failure(I18n.t('categories.errors.not_found')) if category.nil?
+            return Failure(message: I18n.t('categories.errors.not_found')) unless category.user == params[:current_user]
 
-            category.name = params[:name]
-            category.icon = params[:icon]
+            category.name = params[:category][:name]
+            category.icon = params[:category][:icon] if params[:category][:icon].present?
 
             if category.save
               Success(category)
