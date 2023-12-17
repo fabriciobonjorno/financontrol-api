@@ -22,6 +22,16 @@ module Api
           on.success { |response| render json: response, status: 200 }
         end
       end
+
+      def update
+        Api::V1::CategoriesServices::Update::Transaction.call(params) do |on|
+          on.failure(:validate_params) { |message| render json: { message: }, status: 400 }
+          on.failure(:update) { |message| render json: { message: }, status: 400 }
+          on.failure(:output) { |message| render json: { message: }, status: 500 }
+          on.failure { |response| render json: response, status: 500 }
+          on.success { |response| render json: response, status: 200 }
+        end
+      end
     end
   end
 end

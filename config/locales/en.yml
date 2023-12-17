@@ -21,3 +21,4 @@ en:
   categories:
     errors:
       not_exists: 'Error listing categories'
+      not_found: 'Category not found'
