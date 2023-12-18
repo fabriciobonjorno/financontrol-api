@@ -3,7 +3,10 @@
 class Category < ApplicationRecord
   # Validates
   validates :name, :icon, presence: true
-  validates :name, uniqueness: { case_sensitive: false }, if: -> { category_exists? }
+  validates :name, uniqueness: { case_sensitive: false, scope: %i[user_id deleted_at] }, if: -> { will_save_change_to_name? }
+
+  # Scopes
+  scope :all_categories, -> { where(deleted_at: nil) }
 
   # Normalizes
   normalizes :name, with: -> { _1.strip }
@@ -11,13 +14,4 @@ class Category < ApplicationRecord
   # Relationship
   belongs_to :user
   has_many :transactions
-
-  # Public methods
-  def category_exists?
-    user = User.find_by(id: user_id)
-    return false if user.nil?
-
-    category_name = Util.capitalize_name(name)
-    user.categories.exists?(name: category_name)
-  end
 end

@@ -15,8 +15,7 @@ Rails.application.routes.draw do
         post :login
         delete :logout
       end
-
-      resources :categories, except: %i[destroy]
+      resources :categories
     end
   end
   post 'set_locale/:locale', to: 'application#set_locale'

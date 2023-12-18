@@ -3,7 +3,7 @@
 module Api
   module V1
     module CategoriesServices
-      module Update
+      module Delete
         class Transaction < MainService
           step :validate_inputs
           step :update
@@ -25,15 +25,13 @@ module Api
             return Failure(I18n.t('categories.errors.not_found')) if category.nil?
             return Failure(I18n.t('categories.errors.not_found')) if category.user != params[:current_user]
 
-            category.name = params[:category][:name] if params[:category][:name].present?
-            category.icon = params[:category][:icon] if params[:category][:icon].present?
+            category.deleted_at = Time.now
 
             category.save ? Success(category) : Failure(category.errors.full_messages.to_sentence)
           end
 
           def output(category)
-            response = Presenter.call(category)
-            response ? Success(response) : Failure(category.errors.full_messages.to_sentence)
+            Success(message: I18n.t('categories.success.deleted', name: category.name))
           end
         end
       end

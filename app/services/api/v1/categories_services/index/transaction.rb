@@ -44,7 +44,7 @@ module Api
           private
 
           def find_by_search(user_id, order, filter)
-            categories = Category.where(user_id:)
+            categories = Category.where(user_id:).all_categories
             categories = categories.order(name: order)
             categories = categories.where('unaccent(name) ilike unaccent(?)', "%#{filter.upcase}%") if filter.present?
             categories
