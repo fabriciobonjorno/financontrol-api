@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   # Normalizes
   normalizes :email, with: -> { _1.strip.downcase }
+  normalizes :name, with: -> { _1.gsub(/\d/, '').strip }
 
   # Relationship
   has_many :bank_accounts, dependent: :destroy
@@ -57,7 +58,7 @@ class User < ApplicationRecord
   private
 
   def capitalize_name
-    self.name = Util.capitalize_name(name)
+    self.name = Util.capitalize_name(name) if name_changed?
   end
 
   def password_regex

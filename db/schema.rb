@@ -21,17 +21,17 @@ ActiveRecord::Schema[7.1].define(version: 20_231_217_231_658) do
   create_table 'bank_accounts', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.string 'name', default: '', null: false
     t.decimal 'initial_balance', precision: 10, scale: 2, default: '0.0'
-    t.integer 'type', default: 0
+    t.integer 'account_type', default: 0
     t.string 'color'
     t.datetime 'deleted_at'
     t.uuid 'user_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['account_type'], name: 'index_bank_accounts_on_account_type'
     t.index ['color'], name: 'index_bank_accounts_on_color'
     t.index ['deleted_at'], name: 'index_bank_accounts_on_deleted_at'
     t.index ['initial_balance'], name: 'index_bank_accounts_on_initial_balance'
     t.index ['name'], name: 'index_bank_accounts_on_name'
-    t.index ['type'], name: 'index_bank_accounts_on_type'
     t.index ['user_id'], name: 'index_bank_accounts_on_user_id'
   end
 
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 20_231_217_231_658) do
     t.string 'name', default: '', null: false
     t.decimal 'amount', precision: 10, scale: 2, default: '0.0'
     t.date 'date'
-    t.integer 'type', default: 0
+    t.integer 'transaction_type', default: 0
     t.datetime 'deleted_at'
     t.uuid 'bank_account_id', null: false
     t.uuid 'category_id', null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 20_231_217_231_658) do
     t.index ['date'], name: 'index_transactions_on_date'
     t.index ['deleted_at'], name: 'index_transactions_on_deleted_at'
     t.index ['name'], name: 'index_transactions_on_name'
-    t.index ['type'], name: 'index_transactions_on_type'
+    t.index ['transaction_type'], name: 'index_transactions_on_transaction_type'
     t.index ['user_id'], name: 'index_transactions_on_user_id'
   end
 

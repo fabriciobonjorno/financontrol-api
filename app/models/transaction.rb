@@ -7,5 +7,5 @@ class Transaction < ApplicationRecord
   belongs_to :user
 
   # Enum
-  enum types: %i[income expense]
+  enum transaction_type: %i[income expense]
 end

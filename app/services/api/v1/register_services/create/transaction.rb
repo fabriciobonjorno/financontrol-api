@@ -22,7 +22,6 @@ module Api
               password_confirmation: params[:password_confirmation],
               birth_date: params[:birth_date]
             )
-
             if user.save
               send_confirmation_email(user)
               Success(user)
