@@ -5,7 +5,7 @@ class SendConfirmationMailer < ApplicationMailer
     @user = user
     attachments.inline['logo.png'] = File.read(Rails.root.join('app', 'assets', 'images', 'logo.png'))
     mail(
-      from: 'example@example.com',
+      from: ENV['EMAIL_DEFAULT'],
       to: @user.email,
       subject: 'Email de confirmação'
     )
