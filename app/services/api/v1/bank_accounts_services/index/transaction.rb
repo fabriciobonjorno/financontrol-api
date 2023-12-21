@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    module CategoriesServices
+    module BankAccountsServices
       module Index
         class Transaction < MainService
           step :validate_params
@@ -14,15 +14,15 @@ module Api
           end
 
           def paginate_filters(params)
-            categories = FiltersServices::Name::Filter.call(params, Category)
+            bank_accounts = FiltersServices::Name::Filter.call(params, BankAccount)
 
-            return Failure(I18n.t('categories.errors.not_exists')) if categories.empty?
+            return Failure(I18n.t('bank_accounts.errors.not_exists')) if bank_accounts.empty?
 
-            Success(categories)
+            Success(bank_accounts)
           end
 
-          def output(categories)
-            response = Presenter.call(categories)
+          def output(bank_accounts)
+            response = Presenter.call(bank_accounts)
             Success(response)
           end
         end

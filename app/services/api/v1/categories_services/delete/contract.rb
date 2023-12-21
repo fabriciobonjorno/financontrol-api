@@ -6,7 +6,7 @@ module Api
       module Delete
         class Contract < ApplicationContract
           params do
-            required(:id).filled(:string)
+            required(:id).value(:string)
           end
         end
       end

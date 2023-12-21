@@ -6,8 +6,8 @@ module Api
       module Login
         class Contract < ApplicationContract
           params do
-            required(:email).filled(:string)
-            required(:password).filled(:string)
+            required(:email).value(:string)
+            required(:password).value(:string)
           end
         end
       end

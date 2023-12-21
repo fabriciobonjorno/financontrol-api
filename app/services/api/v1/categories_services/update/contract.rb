@@ -6,10 +6,10 @@ module Api
       module Update
         class Contract < ApplicationContract
           params do
-            required(:id).filled(:string)
+            required(:id).value(:string)
             required(:category).hash do
-              optional(:name).filled(:string)
-              optional(:icon).filled(:string)
+              optional(:name).value(:string)
+              optional(:icon).value(:string)
             end
           end
         end

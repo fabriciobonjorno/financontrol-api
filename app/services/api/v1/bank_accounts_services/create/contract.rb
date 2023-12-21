@@ -6,10 +6,10 @@ module Api
       module Create
         class Contract < ApplicationContract
           params do
-            required(:name).filled(:string)
-            required(:initial_balance).filled(:float)
-            required(:account_type).filled(:string)
-            required(:color).filled(:string)
+            required(:name).value(:string)
+            required(:initial_balance).value(:float)
+            required(:account_type).value(:string)
+            required(:color).value(:string)
           end
         end
       end

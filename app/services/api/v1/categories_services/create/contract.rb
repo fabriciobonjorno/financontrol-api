@@ -6,8 +6,8 @@ module Api
       module Create
         class Contract < ApplicationContract
           params do
-            required(:name).filled(:string)
-            required(:icon).filled(:string)
+            required(:name).value(:string)
+            required(:icon).value(:string)
           end
         end
       end

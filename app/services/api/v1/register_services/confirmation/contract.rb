@@ -6,7 +6,7 @@ module Api
       module Confirmation
         class Contract < ApplicationContract
           params do
-            required(:confirmation_token).filled(:string)
+            required(:confirmation_token).value(:string)
           end
         end
       end

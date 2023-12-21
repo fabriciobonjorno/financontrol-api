@@ -5,8 +5,8 @@ module Api
     class CategoriesController < ApiController
       def index
         Api::V1::CategoriesServices::Index::Transaction.call([params, current_user]) do |on|
-          on.failure(:validate_params) { |message| render json: { message: }, status: 400 }
-          on.failure(:paginate_categories) { |message| render json: { message: }, status: 400 }
+          on.failure(:validate_params) { |message| render json: message, status: 400 }
+          on.failure(:paginate_filters) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }
           on.failure { |response| render json: response, status: 500 }
           on.success { |response| render json: response, status: 200 }

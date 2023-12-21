@@ -6,7 +6,7 @@ module Api
       module ResetConfirmationToken
         class Contract < ApplicationContract
           params do
-            required(:email).filled(:string)
+            required(:email).value(:string)
           end
         end
       end

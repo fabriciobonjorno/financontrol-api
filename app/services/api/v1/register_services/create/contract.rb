@@ -6,11 +6,11 @@ module Api
       module Create
         class Contract < ApplicationContract
           params do
-            required(:name).filled(:string)
-            required(:email).filled(:string)
-            required(:password).filled(:string)
-            required(:password_confirmation).filled(:string)
-            required(:birth_date).filled(:date)
+            required(:name).value(:string)
+            required(:email).value(:string)
+            required(:password).value(:string)
+            required(:password_confirmation).value(:string)
+            required(:birth_date).value(:date)
           end
         end
       end
