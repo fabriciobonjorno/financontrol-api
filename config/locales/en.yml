@@ -1,4 +1,7 @@
 en:
+  default:
+    errors:
+      query_not_found: 'No results found'
   locale:
     changed: 'Language changed successfully'
   users:
@@ -26,9 +29,13 @@ en:
   categories:
     errors:
       not_exists: 'You do not have any category registered'
-      not_found:  'Category not found'
     success:
-      deleted: 'Category %{name} successfully deleted' 
+      deleted: 'Category %{name} successfully deleted'
+  bank_accounts:
+    errors:
+      not_exists: 'You do not have any banck account registered'
+    success:
+      deleted: 'Bank account %{name} successfully deleted'
   dry_validation:
     errors:
       fields:

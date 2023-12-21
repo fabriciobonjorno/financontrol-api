@@ -1,4 +1,7 @@
 es:
+  default:
+    errors:
+      query_not_found: 'Ningún resultado encontrado'
   locale:
     changed: 'El idioma cambió exitosamente'
   users:
@@ -26,9 +29,13 @@ es:
   categories:
     errors:
       not_exists: 'No tienes ninguna categoría registrada'
-      not_found:  'Categoría no encontrada'
     success:
-      deleted: 'Categoría %{name} eliminada exitosamente'  
+      deleted: 'Categoría %{name} eliminada exitosamente'
+  bank_accounts:
+    errors:
+      not_exists: 'No tienes ninguna cuenta bancaria registrada'
+    success:
+      deleted: 'Cuenta bancaria %{name} eliminada exitosamente'
   dry_validation:
     errors:
       fields:

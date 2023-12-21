@@ -5,6 +5,7 @@ module Api
     class BankAccountsController < ApiController
       def index
         Api::V1::BankAccountsServices::Index::Transaction.call([params, current_user]) do |on|
+          on.failure(:check_exists) { |message| render json: { message: }, status: 400 }
           on.failure(:validate_params) { |message| render json: message, status: 400 }
           on.failure(:paginate_filters) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }

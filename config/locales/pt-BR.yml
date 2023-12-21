@@ -1,4 +1,7 @@
 pt-BR:
+  default:
+    errors:
+      query_not_found: 'Nenhum resultado encontrado'
   locale:
     changed: 'Idioma alterado com sucesso'
   users:
@@ -26,9 +29,13 @@ pt-BR:
   categories:
     errors:
       not_exists: 'Você não possui nenhuma categoria cadastrada'
-      not_found:  'Categoria não encontrada'
     success:
-      deleted: 'Categoria %{name} deletada com sucesso'      
+      deleted: 'Categoria %{name} deletada com sucesso'
+  bank_accounts:
+    errors:
+      not_exists: 'Você não possui nenhuma conta bancária cadastrada'
+    success:
+      deleted: 'Conta Bancária %{name} deletada com sucesso'
   dry_validation:
     errors:
       fields:
