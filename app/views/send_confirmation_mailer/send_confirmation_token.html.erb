@@ -87,18 +87,18 @@
 
   <div class="container">
     <!-- Adicione a URL da sua logo no atributo src -->
-    <img class="logo" src="<%= attachments['logo.png'].url %>" alt="Logo Fincheck">
-    
+    <img class="logo" src="<%= attachments['logo.png'].url %>" alt="Logo Financontrol">
+
     <h2>Confirmação de Cadastro</h2>
     <p>Prezado <%= @user.name.split(' ').first %>,</p>
     <p>Esperamos que esta mensagem o encontre bem. Agradecemos por se cadastrar em nosso sistema.</p>
     <p>Para garantir a segurança da sua conta e a precisão das informações, solicitamos que confirme o seu cadastro clicando no botão abaixo:</p>
     <a class="button" href="<%= "http://127.0.0.1:3000/confirm_token?confirmation_token=#{@user.confirmation_token}" %>" target="_blank"><span style="color: #fff;">Confirmar Cadastro</span></a>
     <p>Caso você não tenha se cadastrado ou tenha recebido esta mensagem por engano, favor ignorar.</p>
-    <p>Agradecemos por escolher o Fincheck para gerenciar suas despesas. Estamos à disposição para qualquer dúvida ou assistência.</p>
+    <p>Agradecemos por escolher o Financontrol para gerenciar suas despesas. Estamos à disposição para qualquer dúvida ou assistência.</p>
     <div class="signature">
       <p>Atenciosamente,<br>
-        <span style="color: #087F5B;"><a href="#">Fincheck</a></span><br>
+        <span style="color: #087F5B;"><a href="#">Financontrol</a></span><br>
         Seu Gestor de Despesas</p>
     </div>
   </div>
