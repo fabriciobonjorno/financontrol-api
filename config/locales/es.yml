@@ -33,6 +33,7 @@ es:
       not_exists: 'No tienes ninguna categoría registrada'
     success:
       deleted: 'Categoría %{name} eliminada exitosamente'
+      created: 'Categoría %{name} creada exitosamente'
   bank_accounts:
     errors:
       not_exists: 'No tienes ninguna cuenta bancaria registrada'

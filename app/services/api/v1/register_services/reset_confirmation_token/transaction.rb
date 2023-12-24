@@ -24,7 +24,7 @@ module Api
           end
 
           def output(user)
-            Success(message: I18n.t('confirmation.success.reset_token', email: user.email))
+            Success(message: I18n.t('confirmation.success.reset_token', email: user&.email))
           end
 
           private

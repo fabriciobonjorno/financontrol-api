@@ -34,7 +34,7 @@ module Api
 
           def output(category)
             response = Presenter.call(category)
-            response ? Success(response) : Failure(category.errors.full_messages.to_sentence)
+            response ? Success([I18n.t('categories.success.created', name: category&.name), response]) : Failure(category.errors.full_messages.to_sentence)
           end
         end
       end
