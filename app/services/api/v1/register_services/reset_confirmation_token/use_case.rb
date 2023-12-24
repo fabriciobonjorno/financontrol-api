@@ -4,7 +4,7 @@ module Api
   module V1
     module RegisterServices
       module ResetConfirmationToken
-        class Transaction < MainService
+        class UseCase < MainService
           step :validate_params
           step :send_token
           step :output

@@ -4,7 +4,7 @@ module Api
   module V1
     module RegisterServices
       module Create
-        class Transaction < MainService
+        class UseCase < MainService
           step :validate_params
           step :create
           step :output

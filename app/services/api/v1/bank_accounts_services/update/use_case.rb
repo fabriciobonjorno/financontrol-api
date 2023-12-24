@@ -4,7 +4,7 @@ module Api
   module V1
     module BankAccountsServices
       module Update
-        class Transaction < MainService
+        class UseCase < MainService
           step :validate_inputs
           step :update
           step :output

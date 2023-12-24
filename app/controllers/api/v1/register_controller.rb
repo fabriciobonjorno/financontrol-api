@@ -4,7 +4,7 @@ module Api
   module V1
     class RegisterController < ApplicationController
       def create
-        Api::V1::RegisterServices::Create::Transaction.call(params) do |on|
+        Api::V1::RegisterServices::Create::UseCase.call(params) do |on|
           on.failure(:validate_params) { |message| render json: message, status: 400 }
           on.failure(:create) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }
@@ -14,7 +14,7 @@ module Api
       end
 
       def confirmation
-        Api::V1::RegisterServices::Confirmation::Transaction.call(params) do |on|
+        Api::V1::RegisterServices::Confirmation::UseCase.call(params) do |on|
           on.failure(:validate_params) { |message| render json: { message: }, status: 400 }
           on.failure(:validate_token) { |message| render json: { message: }, status: 400 }
           on.failure(:account_confirmation) { |message| render json: { message: }, status: 400 }
@@ -25,7 +25,7 @@ module Api
       end
 
       def reset_confirmation_token
-        Api::V1::RegisterServices::ResetConfirmationToken::Transaction.call(params) do |on|
+        Api::V1::RegisterServices::ResetConfirmationToken::UseCase.call(params) do |on|
           on.failure(:validate_params) { |message| render json: { message: }, status: 400 }
           on.failure(:send_token) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }

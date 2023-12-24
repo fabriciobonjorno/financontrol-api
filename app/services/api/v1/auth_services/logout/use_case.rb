@@ -4,7 +4,7 @@ module Api
   module V1
     module AuthServices
       module Logout
-        class Transaction < MainService
+        class UseCase < MainService
           step :destroy_session
 
           def destroy_session(payload)

@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 20_231_217_231_658) do
   create_table 'transactions', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.string 'name', default: '', null: false
     t.decimal 'amount', precision: 10, scale: 2, default: '0.0'
-    t.date 'date'
+    t.date 'transaction_date'
     t.integer 'transaction_type', default: 0
     t.datetime 'deleted_at'
     t.uuid 'bank_account_id', null: false
@@ -64,9 +64,9 @@ ActiveRecord::Schema[7.1].define(version: 20_231_217_231_658) do
     t.index ['amount'], name: 'index_transactions_on_amount'
     t.index ['bank_account_id'], name: 'index_transactions_on_bank_account_id'
     t.index ['category_id'], name: 'index_transactions_on_category_id'
-    t.index ['date'], name: 'index_transactions_on_date'
     t.index ['deleted_at'], name: 'index_transactions_on_deleted_at'
     t.index ['name'], name: 'index_transactions_on_name'
+    t.index ['transaction_date'], name: 'index_transactions_on_transaction_date'
     t.index ['transaction_type'], name: 'index_transactions_on_transaction_type'
     t.index ['user_id'], name: 'index_transactions_on_user_id'
   end

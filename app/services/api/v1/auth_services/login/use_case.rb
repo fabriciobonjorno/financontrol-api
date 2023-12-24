@@ -4,7 +4,7 @@ module Api
   module V1
     module AuthServices
       module Login
-        class Transaction < MainService
+        class UseCase < MainService
           step :validate_params
           step :find_user
           step :verify_confirmation

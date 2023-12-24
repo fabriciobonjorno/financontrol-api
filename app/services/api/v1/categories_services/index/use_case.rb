@@ -4,7 +4,7 @@ module Api
   module V1
     module CategoriesServices
       module Index
-        class Transaction < MainService
+        class UseCase < MainService
           step :check_exists
           step :validate_params
           step :paginate_filters

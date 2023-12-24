@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       end
       resources :categories
       resources :bank_accounts
+      resources :transactions
     end
   end
   post 'set_locale/:locale', to: 'application#set_locale'

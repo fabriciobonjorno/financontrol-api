@@ -7,7 +7,7 @@ class CreateTransactions < ActiveRecord::Migration[7.1]
     create_table :transactions, id: :uuid do |t|
       t.string :name, default: '', null: false
       t.decimal :amount, precision: 10, scale: 2, default: 0
-      t.date :date
+      t.date :transaction_date
       t.integer :transaction_type, default: 0
       t.datetime :deleted_at
       t.references :bank_account, null: false, foreign_key: true, type: :uuid
@@ -18,7 +18,7 @@ class CreateTransactions < ActiveRecord::Migration[7.1]
     end
     add_index :transactions, :name
     add_index :transactions, :amount
-    add_index :transactions, :date
+    add_index :transactions, :transaction_date
     add_index :transactions, :transaction_type
     add_index :transactions, :deleted_at
   end

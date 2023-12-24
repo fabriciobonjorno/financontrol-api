@@ -3,10 +3,10 @@
 module Api
   module V1
     module CategoriesServices
-      module Create
-        class Transaction < MainService
+      module Update
+        class UseCase < MainService
           step :validate_inputs
-          step :create
+          step :update
           step :output
 
           def validate_inputs(params)
@@ -20,21 +20,20 @@ module Api
             validation.success? ? Success(hash_params) : Failure(format_errors(validation.errors.to_h))
           end
 
-          def create(params)
-            category_params = params[:category]
-            user_id = params[:current_user].id
-            category = Category.new(
-              name: category_params[:name],
-              icon: category_params[:icon],
-              user_id:
-            )
+          def update(params)
+            category = Category.find(params[:category][:id])
+            return Failure(I18n.t('categories.errors.not_found')) if category.nil?
+            return Failure(I18n.t('categories.errors.not_found')) if category.user != params[:current_user]
+
+            category.name = params[:category][:name] if params[:category][:name].present?
+            category.icon = params[:category][:icon] if params[:category][:icon].present?
 
             category.save ? Success(category) : Failure(category.errors.full_messages.to_sentence)
           end
 
           def output(category)
             response = Presenter.call(category)
-            response ? Success([I18n.t('categories.success.created', name: category&.name), response]) : Failure(category.errors.full_messages.to_sentence)
+            response ? Success([I18n.t('categories.success.updated', name: category&.name), response]) : Failure(category.errors.full_messages.to_sentence)
           end
         end
       end

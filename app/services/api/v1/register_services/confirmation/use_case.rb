@@ -4,7 +4,7 @@ module Api
   module V1
     module RegisterServices
       module Confirmation
-        class Transaction < MainService
+        class UseCase < MainService
           step :validate_params
           step :validate_token
           step :account_confirmation
