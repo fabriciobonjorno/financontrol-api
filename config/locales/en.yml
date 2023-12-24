@@ -33,7 +33,8 @@ en:
       not_exists: 'You do not have any category registered'
     success:
       deleted: 'Category %{name} successfully deleted'
-      created: 'Category %{name} created successfully'
+      created: 'Category %{name} successfully created'
+      updated: 'Category %{name} successfully updated'
   bank_accounts:
     errors:
       not_exists: 'You do not have any banck account registered'

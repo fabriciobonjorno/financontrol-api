@@ -30,7 +30,7 @@ module Api
           on.failure(:update) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }
           on.failure { |response| render json: response, status: 500 }
-          on.success { |response| render json: response, status: 200 }
+          on.success { |message, category| render json: { message:, category: }, status: 200 }
         end
       end
 

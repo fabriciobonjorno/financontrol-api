@@ -34,6 +34,7 @@ es:
     success:
       deleted: 'Categoría %{name} eliminada exitosamente'
       created: 'Categoría %{name} creada exitosamente'
+      updated: 'Categoría %{name} actualizada exitosamente'
   bank_accounts:
     errors:
       not_exists: 'No tienes ninguna cuenta bancaria registrada'

@@ -34,6 +34,7 @@ pt-BR:
     success:
       deleted: 'Categoria %{name} deletada com sucesso'
       created: 'Categoria %{name} criada com sucesso'
+      updated: 'Categoria %{name} atualizada com sucesso'
   bank_accounts:
     errors:
       not_exists: 'Você não possui nenhuma conta bancária cadastrada'
