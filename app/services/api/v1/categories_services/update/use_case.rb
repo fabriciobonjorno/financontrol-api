@@ -21,9 +21,10 @@ module Api
           end
 
           def update(params)
-            category = Category.find(params[:category][:id])
-            return Failure(I18n.t('categories.errors.not_found')) if category.nil?
-            return Failure(I18n.t('categories.errors.not_found')) if category.user != params[:current_user]
+            id = params[:category][:id]
+            user_id =  params[:current_user][:id]
+            category = find_category(id, user_id)
+            return Failure(I18n.t('categories.errors.not_found')) unless category
 
             category.name = params[:category][:name] if params[:category][:name].present?
             category.icon = params[:category][:icon] if params[:category][:icon].present?
@@ -34,6 +35,12 @@ module Api
           def output(category)
             response = Presenter.call(category)
             response ? Success([I18n.t('categories.success.updated', name: category&.name), response]) : Failure(category.errors.full_messages.to_sentence)
+          end
+
+          private
+
+          def find_category(id, user_id)
+            OwnerServices::ValidOwner::FindOwner.call(id, user_id, Category)
           end
         end
       end

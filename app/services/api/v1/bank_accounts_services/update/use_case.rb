@@ -20,9 +20,11 @@ module Api
           end
 
           def update(params)
-            bank_account = BankAccount.find(params[:bank_account][:id])
-            return Failure(I18n.t('bank_accounts.errors.not_found')) if bank_account.nil?
-            return Failure(I18n.t('bank_accounts.errors.not_found')) if bank_account.user != params[:current_user]
+            id = params[:bank_account][:id]
+            user_id = params[:current_user][:id]
+
+            bank_account = find_bank_account(id, user_id)
+            return Failure(I18n.t('bank_accounts.errors.not_found')) unless bank_account
 
             bank_account.name = params[:bank_account][:name] if params[:bank_account][:name].present?
             bank_account.initial_balance = params[:bank_account][:initial_balance] if params[:bank_account][:initial_balance].present?
@@ -35,6 +37,12 @@ module Api
           def output(bank_account)
             response = Presenter.call(bank_account)
             response ? Success([I18n.t('bank_accounts.success.updated', name: bank_account&.name), response]) : Failure(bank_account.errors.full_messages.to_sentence)
+          end
+
+          private
+
+          def find_bank_account(id, user_id)
+            OwnerServices::ValidOwner::FindOwner.call(id, user_id, BankAccount)
           end
         end
       end

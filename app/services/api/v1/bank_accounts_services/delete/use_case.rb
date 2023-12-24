@@ -21,9 +21,11 @@ module Api
           end
 
           def update(params)
-            bank_account = BankAccount.find(params[:bank_account][:id])
-            return Failure(I18n.t('bank_accounts.errors.not_found')) if bank_account.nil?
-            return Failure(I18n.t('bank_accounts.errors.not_found')) if bank_account.user != params[:current_user]
+            id = params[:bank_account][:id]
+            user_id = params[:current_user][:id]
+
+            bank_account = find_bank_account(id, user_id)
+            return Failure(I18n.t('bank_accounts.errors.not_found')) unless bank_account
 
             bank_account.deleted_at = Time.now
 
@@ -32,6 +34,12 @@ module Api
 
           def output(bank_account)
             Success(message: I18n.t('bank_accounts.success.deleted', name: bank_account.name))
+          end
+
+          private
+
+          def find_bank_account(id, user_id)
+            OwnerServices::ValidOwner::FindOwner.call(id, user_id, BankAccount)
           end
         end
       end
