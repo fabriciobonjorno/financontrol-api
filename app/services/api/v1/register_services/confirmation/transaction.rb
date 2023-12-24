@@ -29,7 +29,7 @@ module Api
           end
 
           def output(user)
-            Success(message: I18n.t('confirmation.success.confirmation_token', email: user.email))
+            Success(message: I18n.t('confirmation.success.confirmation_token', name: user&.name&.split(' ')&.first))
           end
         end
       end

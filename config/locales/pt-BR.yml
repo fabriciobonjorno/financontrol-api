@@ -8,6 +8,8 @@ pt-BR:
     errors:
       email: 'Email inválido, verifique e tente novamente'
       password: 'A senha deve ter mais de 8 caracteres, incluindo 1 letra maiúscula, 1 número, 1 caractere especial'
+    success: 
+      created: 'Cadastro realizado com sucesso, verifique seu e-mail. Para confirmar sua conta'
   login:
     success:
        sign_in: 'Usuário autenticado com sucesso'
@@ -25,7 +27,7 @@ pt-BR:
       confirmed: 'Conta já confirmada'
     success:
       reset_token: 'Token resetado com sucesso, verifique seu email %{email}'
-      confirmation_token: 'Sua conta foi confirmada com sucesso, use o email %{email} para logar'
+      confirmation_token: 'Parabéns, %{name}, sua conta foi confirmada com sucesso!'
   categories:
     errors:
       not_exists: 'Você não possui nenhuma categoria cadastrada'

@@ -8,6 +8,8 @@ es:
     errors:
       email: 'Correo electrónico no válido, verifique e intente nuevamente'
       password: 'La contraseña debe tener más de 8 caracteres, incluyendo 1 letra mayúscula, 1 número, 1 carácter especial'
+    success: 
+      created: 'Registro exitoso, revisa tu correo electrónico. Para confirmar su cuenta'
   login:
     success:
        sign_in: 'Usuario autenticado correctamente'
@@ -25,7 +27,7 @@ es:
       confirmed: 'Cuenta ya confirmada'
     success:
       reset_token: 'Restablecimiento del token exitoso, revisa tu correo electrónico %{email}'
-      confirmation_token: 'Su cuenta ha sido confirmada exitosamente, use el correo electrónico %{email} para iniciar sesión'
+      confirmation_token: '¡Felicitaciones %{name}, tu cuenta ha sido confirmada exitosamente!'
   categories:
     errors:
       not_exists: 'No tienes ninguna categoría registrada'

@@ -32,7 +32,7 @@ module Api
 
           def output(user)
             response = Presenter.call(user)
-            response ? Success(response) : Failure(user.errors.full_messages.to_sentence)
+            response ? Success([I18n.t('users.success.created'), response]) : Failure(user.errors.full_messages.to_sentence)
           end
 
           private

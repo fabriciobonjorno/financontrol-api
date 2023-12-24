@@ -8,6 +8,8 @@ en:
     errors:
       email: 'Invalid email, check and try again'
       password: 'Password must be more than 8 characters, including 1 uppercase letter, 1 number, 1 special character'
+    success: 
+      created: 'Registration successful, check your email. To confirm your account'
   login:
     success:
        sign_in: 'User authenticated succesfully'
@@ -25,7 +27,7 @@ en:
       confirmed: 'Account already confirmed'
     success:
       reset_token: 'Token reset successfully, check your email %{email}'
-      confirmation_token: 'Your account has been confirmed successfully, use email %{email} to log in'
+      confirmation_token: 'Congratulations, %{name}, your account has been successfully confirmed!'
   categories:
     errors:
       not_exists: 'You do not have any category registered'
