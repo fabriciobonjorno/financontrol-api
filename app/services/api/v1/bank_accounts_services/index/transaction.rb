@@ -24,6 +24,7 @@ module Api
 
           def paginate_filters(params)
             bank_accounts = FiltersServices::Name::Filter.call(params, BankAccount)
+            bank_accounts = bank_accounts.all_bank_accounts
 
             return Failure(I18n.t('default.errors.query_not_found')) if bank_accounts.empty?
 

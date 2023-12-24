@@ -31,6 +31,7 @@ pt-BR:
   categories:
     errors:
       not_exists: 'Você não possui nenhuma categoria cadastrada'
+      not_found: 'Categoria não encontrada'
     success:
       deleted: 'Categoria %{name} deletada com sucesso'
       created: 'Categoria %{name} criada com sucesso'
@@ -38,9 +39,11 @@ pt-BR:
   bank_accounts:
     errors:
       not_exists: 'Você não possui nenhuma conta bancária cadastrada'
+      not_found: 'Conta Bancária não encontrada'
     success:
       deleted: 'Conta Bancária %{name} deletada com sucesso'
       created: 'Conta Bancária %{name} criada com sucesso'
+      updated: 'Conta Bancária %{name} atualizada com sucesso'
   dry_validation:
     errors:
       fields:

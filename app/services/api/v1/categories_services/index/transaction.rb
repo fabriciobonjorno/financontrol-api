@@ -24,6 +24,7 @@ module Api
 
           def paginate_filters(params)
             categories = FiltersServices::Name::Filter.call(params, Category)
+            categories = categories.all_categories
 
             return Failure(I18n.t('categories.errors.not_exists')) if categories.empty?
 

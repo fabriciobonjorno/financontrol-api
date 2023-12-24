@@ -41,6 +41,7 @@ es:
     success:
       deleted: 'Cuenta bancaria %{name} eliminada exitosamente'
       created: 'Cuenta bancaria %{name} creada exitosamente'
+      updated: 'Cuenta bancaria %{name} actualizada exitosamente'
   dry_validation:
     errors:
       fields:
