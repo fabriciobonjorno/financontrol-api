@@ -36,7 +36,7 @@ module Api
 
           def output(bank_account)
             response = Presenter.call(bank_account)
-            response ? Success(response) : Failure(bank_account.errors.full_messages.to_sentence)
+            response ? Success([I18n.t('bank_accounts.success.created', name: bank_account&.name), response]) : Failure(category.errors.full_messages.to_sentence)
           end
         end
       end

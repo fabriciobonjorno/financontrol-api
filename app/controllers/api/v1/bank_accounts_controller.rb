@@ -20,7 +20,7 @@ module Api
           on.failure(:create) { |message| render json: { message: }, status: 400 }
           on.failure(:output) { |message| render json: { message: }, status: 500 }
           on.failure { |response| render json: response, status: 500 }
-          on.success { |response| render json: response, status: 200 }
+          on.success { |message, bank_account| render json: { message:, bank_account: }, status: 200 }
         end
       end
     end

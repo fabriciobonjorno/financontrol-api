@@ -39,6 +39,7 @@ pt-BR:
       not_exists: 'Você não possui nenhuma conta bancária cadastrada'
     success:
       deleted: 'Conta Bancária %{name} deletada com sucesso'
+      created: 'Conta Bancária %{name} criada com sucesso'
   dry_validation:
     errors:
       fields:

@@ -39,6 +39,7 @@ en:
       not_exists: 'You do not have any banck account registered'
     success:
       deleted: 'Bank account %{name} successfully deleted'
+      created: 'Bank account %{name} successfully created'
   dry_validation:
     errors:
       fields:

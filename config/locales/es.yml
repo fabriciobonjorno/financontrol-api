@@ -39,6 +39,7 @@ es:
       not_exists: 'No tienes ninguna cuenta bancaria registrada'
     success:
       deleted: 'Cuenta bancaria %{name} eliminada exitosamente'
+      created: 'Cuenta bancaria %{name} creada exitosamente'
   dry_validation:
     errors:
       fields:
