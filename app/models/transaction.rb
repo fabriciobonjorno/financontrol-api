@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Transaction < ApplicationRecord
+  before_save :update_total_transactions
+
   # Validates
   validates :name, :amount, :transaction_date, :transaction_type, presence: true
   validates :amount, numericality: { greater_than: 0 }
@@ -12,4 +14,22 @@ class Transaction < ApplicationRecord
 
   # Enum
   enum transaction_type: %i[income expense]
+
+  # Public methods
+  def income?
+    transaction_type == 'income'
+  end
+
+  def expense?
+    transaction_type == 'expense'
+  end
+
+  # Private methods
+  private
+
+  def update_total_transactions
+    adjustment = income? ? amount : -amount
+    bank_account.total_transactions += adjustment
+    bank_account.save
+  end
 end

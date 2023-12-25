@@ -53,6 +53,12 @@ es:
         password_confirmation: 'Confirmación de contraseña'
         birth_date: 'Fecha de nacimiento'
         confirmation_token: 'Token de confirmación'
+        initial_balance: 'Saldo inicial'
+        account_type: 'Tipo de cuenta'
+        color: 'Color'
+        amount: 'Cantidad'
+        transaction_type: 'Tipo de transacción'
+        transaction_date: 'Fecha de la transacción'
       missing: "es obligatorio"
       link:
         article: 'y'

@@ -22,10 +22,14 @@ module Api
           end
 
           def check_category_account(params)
-            category = find_category(params[:transaction][:category_id], params[:current_user][:id])
+            account_id = params[:transaction][:bank_account_id]
+            category_id = params[:transaction][:category_id]
+            user_id = params[:current_user][:id]
+
+            category = find_category(category_id, user_id)
             return Failure(I18n.t('categories.errors.not_found')) unless category
 
-            bank_account = find_bank_account(params[:transaction][:bank_account_id], params[:current_user][:id])
+            bank_account = find_bank_account(account_id, user_id)
             return Failure(I18n.t('bank_accounts.errors.not_found')) unless bank_account
 
             Success(params)
@@ -51,17 +55,17 @@ module Api
 
           def output(transaction)
             response = Presenter.call(transaction)
-            response ? Success([I18n.t('categories.success.created', name: transaction&.name), response]) : Failure(transaction.errors.full_messages.to_sentence)
+            response ? Success([I18n.t('transactions.success.created', name: transaction&.name), response]) : Failure(transaction.errors.full_messages.to_sentence)
           end
 
           private
 
-          def find_category(category_id, current_user)
-            Category.find_by(id: category_id, user: current_user)
+          def find_category(category_id, user_id)
+            OwnerServices::ValidOwner::FindOwner.call(category_id, user_id, Category)
           end
 
-          def find_bank_account(bank_account_id, current_user)
-            BankAccount.find_by(id: bank_account_id, user: current_user)
+          def find_bank_account(account_id, user_id)
+            OwnerServices::ValidOwner::FindOwner.call(account_id, user_id, BankAccount)
           end
         end
       end

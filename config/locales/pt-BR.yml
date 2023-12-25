@@ -44,6 +44,14 @@ pt-BR:
       deleted: 'Conta Bancária %{name} deletada com sucesso'
       created: 'Conta Bancária %{name} criada com sucesso'
       updated: 'Conta Bancária %{name} atualizada com sucesso'
+  transactions:
+    errors:
+      not_exists: 'Você não possui nenhuma transação'
+      not_found: 'Transação não encontrada'
+    success:
+      deleted: 'Transação %{name} deletada com sucesso'
+      created: 'Transação %{name} criada com sucesso'
+      updated: 'Transação %{name} atualizada com sucesso'
   dry_validation:
     errors:
       fields:
@@ -55,6 +63,12 @@ pt-BR:
         password_confirmation: 'Senha de confirmação'
         birth_date: 'Data de nascimento'
         confirmation_token: 'Token de confirmação'
+        initial_balance: 'Saldo inicial'
+        account_type: 'Tipo de conta'
+        color: 'Cor'
+        amount: 'Valor'
+        transaction_type: 'Tipo da transação'
+        transaction_date: 'Data da transação'
       missing: "é obrigatório"
       link:
         article: 'e'
