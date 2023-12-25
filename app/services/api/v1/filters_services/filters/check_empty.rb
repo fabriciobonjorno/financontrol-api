@@ -3,8 +3,8 @@
 module Api
   module V1
     module FiltersServices
-      module Name
-        class InitialFilter < MainService
+      module Filters
+        class CheckEmpty < MainService
           def call(params, model)
             _, current_user = params
             user_id = current_user.id

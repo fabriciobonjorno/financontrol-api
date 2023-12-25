@@ -7,6 +7,9 @@ class Transaction < ApplicationRecord
   validates :name, :amount, :transaction_date, :transaction_type, presence: true
   validates :amount, numericality: { greater_than: 0 }
 
+  # Scopes
+  scope :all_transactions, -> { where(deleted_at: nil) }
+
   # Relationship
   belongs_to :bank_account
   belongs_to :category

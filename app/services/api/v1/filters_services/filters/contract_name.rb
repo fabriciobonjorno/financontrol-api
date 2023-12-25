@@ -3,8 +3,8 @@
 module Api
   module V1
     module FiltersServices
-      module Name
-        class Contract < ApplicationContract
+      module Filters
+        class ContractName < ApplicationContract
           params do
             optional(:current_page).value(:integer)
             optional(:per_page).value(:integer)

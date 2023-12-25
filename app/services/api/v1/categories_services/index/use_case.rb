@@ -11,19 +11,19 @@ module Api
           step :output
 
           def check_exists(params)
-            bank_accounts = FiltersServices::Name::InitialFilter.call(params, Category)
+            categories = FiltersServices::Filters::CheckEmpty.call(params, Category)
 
-            return Failure(I18n.t('bank_accounts.errors.not_exists')) if bank_accounts.empty?
+            return Failure(I18n.t('categories.errors.not_exists')) if categories.empty?
 
             Success(params)
           end
 
           def validate_params(params)
-            FiltersServices::Name::Validate.call(params)
+            FiltersServices::Filters::ValidateName.call(params)
           end
 
           def paginate_filters(params)
-            categories = FiltersServices::Name::Filter.call(params, Category)
+            categories = FiltersServices::Filters::FilterName.call(params, Category)
             categories = categories.all_categories
 
             return Failure(I18n.t('categories.errors.not_exists')) if categories.empty?
