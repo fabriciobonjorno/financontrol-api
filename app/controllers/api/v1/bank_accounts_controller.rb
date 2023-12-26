@@ -43,6 +43,13 @@ module Api
           on.success { |response| render json: response, status: 200 }
         end
       end
+
+      def accounts_types
+        Api::V1::BankAccountsServices::GetAccountsTypes::UseCase.call do |on|
+          on.failure(:accounts_types) { |message| render json: { message: }, status: 400 }
+          on.success { |response| render json: response, status: 200 }
+        end
+      end
     end
   end
 end

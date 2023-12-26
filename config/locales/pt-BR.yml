@@ -39,19 +39,28 @@ pt-BR:
   bank_accounts:
     errors:
       not_exists: 'Você não possui nenhuma conta bancária cadastrada'
-      not_found: 'Conta Bancária não encontrada'
+      type_not_found: 'Tipo Conta Bancária não encontrada'
     success:
       deleted: 'Conta Bancária %{name} deletada com sucesso'
       created: 'Conta Bancária %{name} criada com sucesso'
       updated: 'Conta Bancária %{name} atualizada com sucesso'
+    types:
+      checking: 'Conta Corrente'
+      saving: 'Conta Poupança'
+      investment: 'Conta de investimentos'
+      cash: 'Dinheiro'
   transactions:
     errors:
       not_exists: 'Você não possui nenhuma transação'
       not_found: 'Transação não encontrada'
+      type_not_found: 'Tipo de transação não encontrado'
     success:
       deleted: 'Transação %{name} deletada com sucesso'
       created: 'Transação %{name} criada com sucesso'
       updated: 'Transação %{name} atualizada com sucesso'
+    types:
+      income: 'Receita'
+      expense: 'Despesa'
   dry_validation:
     errors:
       fields:

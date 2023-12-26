@@ -16,8 +16,16 @@ Rails.application.routes.draw do
         delete :logout
       end
       resources :categories
-      resources :bank_accounts
-      resources :transactions
+      resources :bank_accounts do
+        collection do
+          get :accounts_types
+        end
+      end
+      resources :transactions do
+        collection do
+          get :transactions_types
+        end
+      end
     end
   end
   post 'set_locale/:locale', to: 'application#set_locale'

@@ -38,10 +38,28 @@ es:
   bank_accounts:
     errors:
       not_exists: 'No tienes ninguna cuenta bancaria registrada'
+      type_not_found: 'Tipo Cuenta bancaria no encontrada'
     success:
       deleted: 'Cuenta bancaria %{name} eliminada exitosamente'
       created: 'Cuenta bancaria %{name} creada exitosamente'
       updated: 'Cuenta bancaria %{name} actualizada exitosamente'
+    types:
+      checking: 'Cuenta Corriente'
+      saving: 'Cuenta de Ahorro'
+      investment: 'Cuenta de Inversión'
+      cash: 'Dinero'
+  transactions:
+    errors:
+      not_exists: 'No tienes ninguna transacción'
+      not_found: 'Transacción no encontrada'
+      type_not_found: 'Tipo de transacción no encontrado'
+    success:
+      deleted: 'La transacción %{name} se eliminó correctamente'
+      created: 'Transacción %{name} creada exitosamente'
+      updated: 'La transacción %{name} se actualizó correctamente'
+    types:
+      income: 'Ingresos'
+      expense: 'Gasto'
   dry_validation:
     errors:
       fields:

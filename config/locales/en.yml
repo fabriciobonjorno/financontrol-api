@@ -40,18 +40,28 @@ en:
     errors:
       not_exists: 'You do not have any bank account registered'
       not_found: 'Bank account not found'
+      type_not_found: 'Type Bank Account not found'
     success:
       deleted: 'Bank account %{name} successfully deleted'
       created: 'Bank account %{name} successfully created'
       updated: 'Bank account %{name} successfully updated'
+    types:
+      checking: 'Checking Account'
+      saving: 'Saving Account'
+      investment: 'Investment Account'
+      cash: 'Cash'
   transactions:
     errors:
       not_exists: 'You do not have any transaction'
       not_found: 'Transaction not found'
+      type_not_found: 'Transaction type not found'
     success:
       deleted: 'Transaction %{name} successfully deleted'
       created: 'Transaction %{name} successfully created'
       updated: 'Transaction %{name} successfully updated'
+    types:
+      income: 'Income'
+      expense: 'Expense'
   dry_validation:
     errors:
       fields:

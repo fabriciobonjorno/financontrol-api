@@ -24,6 +24,13 @@ module Api
           on.success { |message, transaction| render json: { message:, transaction: }, status: 200 }
         end
       end
+
+      def transactions_types
+        Api::V1::TransactionsServices::GetTransactionsTypes::UseCase.call do |on|
+          on.failure(:transactions_types) { |message| render json: { message: }, status: 400 }
+          on.success { |response| render json: response, status: 200 }
+        end
+      end
     end
   end
 end
