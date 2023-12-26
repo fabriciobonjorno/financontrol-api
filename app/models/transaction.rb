@@ -9,8 +9,8 @@ class Transaction < ApplicationRecord
 
   # Scopes
   scope :all_transactions, -> { where(deleted_at: nil) }
-  scope :incomes, -> { where(transaction_type: 'income') }
-  scope :expenses, -> { where(transaction_type: 'expense') }
+  scope :incomes, -> { all_transactions.where(transaction_type: 'income') }
+  scope :expenses, -> { all_transactions.where(transaction_type: 'expense') }
 
   # Relationship
   belongs_to :bank_account

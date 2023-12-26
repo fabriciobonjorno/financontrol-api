@@ -22,8 +22,8 @@ class Category < ApplicationRecord
   # Public methods
   def soft_delete
     update(deleted_at: Time.now)
-    transactions.update_all(deleted_at: Time.now)
     update_total_transactions
+    transactions.update_all(deleted_at: Time.now)
   end
 
   # Private methods

@@ -27,9 +27,7 @@ module Api
             bank_account = find_bank_account(id, user_id)
             return Failure(I18n.t('bank_accounts.errors.not_found')) unless bank_account
 
-            bank_account.deleted_at = Time.now
-
-            bank_account.save ? Success(bank_account) : Failure(bank_account.errors.full_messages.to_sentence)
+            bank_account.soft_delete ? Success(bank_account) : Failure(bank_account.errors.full_messages.to_sentence)
           end
 
           def output(bank_account)

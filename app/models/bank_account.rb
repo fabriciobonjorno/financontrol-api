@@ -22,10 +22,27 @@ class BankAccount < ApplicationRecord
   # Enum
   enum account_type: %i[checking saving investment cash]
 
+  # Public methods
+  def soft_delete
+    update(deleted_at: Time.now)
+    update_total_transactions
+    transactions.update_all(deleted_at: Time.now)
+  end
+
   # Private methods
   private
 
   def capitalize_name
     self.name = Util.capitalize_name(name) if name_changed?
+  end
+
+  def update_total_transactions
+    return unless saved_change_to_deleted_at?
+
+    incomes = transactions.incomes.sum(:amount)
+    expenses = transactions.expenses.sum(:amount)
+    total_difference = incomes - expenses
+    self.total_transactions -= total_difference
+    save
   end
 end
