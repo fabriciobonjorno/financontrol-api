@@ -26,9 +26,7 @@ module Api
             category = find_category(id, user_id)
             return Failure(I18n.t('categories.errors.not_found')) unless category
 
-            category.deleted_at = Time.now
-
-            category.save ? Success(category) : Failure(category.errors.full_messages.to_sentence)
+            category.soft_delete ? Success(category) : Failure(category.errors.full_messages.to_sentence)
           end
 
           def output(category)

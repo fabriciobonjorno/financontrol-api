@@ -16,7 +16,8 @@ class BankAccount < ApplicationRecord
 
   # Relationship
   belongs_to :user
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
+  has_many :categories, through: :transactions, dependent: :destroy
 
   # Enum
   enum account_type: %i[checking saving investment cash]

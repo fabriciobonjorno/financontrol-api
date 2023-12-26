@@ -16,12 +16,34 @@ class Category < ApplicationRecord
 
   # Relationship
   belongs_to :user
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
+  has_many :bank_accounts, through: :transactions, dependent: :destroy
+
+  # Public methods
+  def soft_delete
+    update(deleted_at: Time.now)
+    transactions.update_all(deleted_at: Time.now)
+    update_total_transactions
+  end
 
   # Private methods
   private
 
   def capitalize_name
     self.name = Util.capitalize_name(name) if name_changed?
+  end
+
+  def update_total_transactions
+    return unless saved_change_to_deleted_at?
+
+    transactions.each do |transaction|
+      next unless transaction.bank_account.present?
+
+      incomes = transaction.income? ? transaction.amount : 0
+      expenses = transaction.expense? ? transaction.amount : 0
+      total_difference = incomes - expenses
+      transaction.bank_account.total_transactions -= total_difference
+      transaction.bank_account.save
+    end
   end
 end
