@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class Transaction < ApplicationRecord
-  before_save :update_total_transactions
-
   # Validates
   validates :name, :amount, :transaction_date, :transaction_type, presence: true
   validates :amount, numericality: { greater_than: 0 }
 
   # Scopes
   scope :all_transactions, -> { where(deleted_at: nil) }
-  scope :incomes, -> { all_transactions.where(transaction_type: 'income') }
-  scope :expenses, -> { all_transactions.where(transaction_type: 'expense') }
+  scope :incomes, -> { all_transactions.where(transaction_type: 'income').sum(:amount) }
+  scope :expenses, -> { all_transactions.where(transaction_type: 'expense').sum(:amount) }
 
   # Relationship
   belongs_to :bank_account
@@ -29,12 +27,12 @@ class Transaction < ApplicationRecord
     transaction_type == 'expense'
   end
 
-  # Private methods
-  private
+  def soft_delete
+    update(deleted_at: Time.now)
+  end
 
-  def update_total_transactions
-    adjustment = income? ? amount : -amount
-    bank_account.total_transactions += adjustment
-    bank_account.save
+  # Private methods
+  def capitalize_name
+    self.name = Util.capitalize_name(name) if name_changed?
   end
 end

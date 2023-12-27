@@ -22,7 +22,6 @@ class Category < ApplicationRecord
   # Public methods
   def soft_delete
     update(deleted_at: Time.now)
-    update_total_transactions
     transactions.update_all(deleted_at: Time.now)
   end
 
@@ -31,19 +30,5 @@ class Category < ApplicationRecord
 
   def capitalize_name
     self.name = Util.capitalize_name(name) if name_changed?
-  end
-
-  def update_total_transactions
-    return unless saved_change_to_deleted_at?
-
-    transactions.each do |transaction|
-      next unless transaction.bank_account.present?
-
-      incomes = transaction.income? ? transaction.amount : 0
-      expenses = transaction.expense? ? transaction.amount : 0
-      total_difference = incomes - expenses
-      transaction.bank_account.total_transactions -= total_difference
-      transaction.bank_account.save
-    end
   end
 end
