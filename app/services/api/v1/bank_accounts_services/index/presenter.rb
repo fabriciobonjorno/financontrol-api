@@ -27,10 +27,14 @@ module Api
           end
 
           def bank_account_map(bank_account)
+            incomes = bank_account.transactions.incomes
+            expenses = bank_account.transactions.expenses
+            total_balance = bank_account.initial_balance + (incomes - expenses)
+
             {
               id: bank_account.id,
               name: bank_account.name,
-              initial_balance: bank_account.initial_balance,
+              total_balance: total_balance.to_f,
               account_type: bank_account.account_type,
               color: bank_account.color,
               created_at: Util.format_date(bank_account.created_at)
