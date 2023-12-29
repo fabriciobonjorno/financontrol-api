@@ -9,6 +9,8 @@ class Transaction < ApplicationRecord
   scope :all_transactions, -> { where(deleted_at: nil) }
   scope :incomes, -> { all_transactions.where(transaction_type: 'income').sum(:amount) }
   scope :expenses, -> { all_transactions.where(transaction_type: 'expense').sum(:amount) }
+  scope :incomes_by_category, -> { all_transactions.where(transaction_type: 'income').group(:category).sum(:amount) }
+  scope :expenses_by_category, -> { all_transactions.where(transaction_type: 'expense').group(:category).sum(:amount) }
 
   # Relationship
   belongs_to :bank_account

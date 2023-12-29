@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :transactions do
         collection do
           get :transactions_types
+          get :graphic_data
         end
       end
     end

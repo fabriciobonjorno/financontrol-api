@@ -24,10 +24,10 @@ module Api
             find_list = model.where(user_id:)
             find_list = find_list.order(transaction_date: order)
             find_list = find_list.where('transaction_date between ? AND ?', start_date, end_date) if start_date && end_date
-            find_list = find_list.where(transaction_type:) if transaction_type
-            find_list = find_list.where(category_id:) if category_id
-            find_list = find_list.where(bank_account_id:) if bank_account_id
-            find_list = find_list.where('unaccent(name) ilike unaccent(?)', "%#{name.upcase}%") if name
+            find_list = find_list.where(transaction_type:) unless transaction_type.nil?
+            find_list = find_list.where(category_id:) unless category_id.nil?
+            find_list = find_list.where(bank_account_id:) unless bank_account_id.nil?
+            find_list = find_list.where('unaccent(name) ilike unaccent(?)', "%#{name.upcase}%") unless name.nil?
             find_list.page(current_page).per(per_page)
           end
         end
