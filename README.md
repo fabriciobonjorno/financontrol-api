@@ -1,24 +1,28 @@
-# README
+## **FINANCONTROL API**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## **Getting Started!**
 
-Things you may want to cover:
+### **Docker (recommended)**
 
-* Ruby version
+Make sure you have Docker and Docker-Compose installed on your machine!
 
-* System dependencies
+> But, if you haven't installed it yet, I recommend the links below for installation using Ubuntu 20.04:
+>
+>  * Install Docker: [Click here!](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt)
+>
+>  * Install Docker-compose: [Click here!](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt)
 
-* Configuration
+**Run to build the docker image and install dependences:**
+```
+make build
+```
 
-* Database creation
+**Now, whenever you want to go up to the API, run the command:**
+```
+make up
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**If you want to run the tests**:
+```
+make rspec
+```
