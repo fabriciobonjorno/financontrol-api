@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: financontrol-api-db
+    image: "postgres:14.0"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  api:
+    tty: true
+    stdin_open: true
+    container_name: financontrol-api
+    build: .
+    command: bash bin/start.sh
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+volumes:
+  postgres:

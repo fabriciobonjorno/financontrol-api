@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 
 ruby '3.2.2'
@@ -15,7 +13,7 @@ gem 'puma', '>= 5.0'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
-gem 'dotenv-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -41,7 +39,24 @@ gem 'kaminari'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
-  gem 'hirb' # Hirb.enable console command
+  # Hirb.enable console command
+  gem 'hirb'
+  # Autoload dotenv in Rails.
+  gem 'dotenv-rails'
+  # Use Pry as your rails console
+  gem 'pry-rails', '~> 0.3.3'
+  # rspec-rails is a testing framework for Rails 5+.
+  gem 'rspec-rails', '~> 6.0'
+  # Set of matchers and helpers to allow you test your APIs responses like a pro.
+  gem 'rspec-json_expectations', '~> 2.2'
+  # WebMock allows stubbing HTTP requests and setting expectations on HTTP requests.
+  gem 'webmock', '~> 3.18'
+  # factory_bot_rails provides integration between factory_bot and rails 5.0 or newer
+  gem 'factory_bot_rails', '~> 6.2'
+  # Simple one-liner tests for common Rails functionality
+  gem 'shoulda-matchers', '~> 5.3'
+  # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses..
+  gem 'faker', '~> 3.1'
 end
 
 group :development do
